@@ -99,6 +99,7 @@ public class Main {
                 System.out.println("No se encontró la nota para ese estudiante y asignatura.");
             }
         }
+        
         public static void actualizarNota(ArrayList<Nota> notas, Scanner sc) {
             System.out.println("\n--- Actualizar Nota ---");
             System.out.print("Ingrese código del estudiante: ");
@@ -134,6 +135,25 @@ public class Main {
                 }
             }
             if(!encontrada) {
+                System.out.println("No se encontró la nota para ese estudiante y asignatura.");
+            }
+        }
+        
+        public static void eliminarNota(ArrayList<Nota> notas, Scanner sc) {
+            System.out.println("\n--- Eliminar Nota ---");
+            System.out.print("Ingrese código del estudiante: ");
+            String codigoEst = sc.nextLine();
+            System.out.print("Ingrese código de la asignatura: ");
+            String codigoAsig = sc.nextLine();
+
+            boolean eliminada = notas.removeIf(n -> 
+                n.getEstudiante().getCodigo().equals(codigoEst) &&
+                n.getAsignatura().getCodigo().equals(codigoAsig)
+            );
+
+            if(eliminada) {
+                System.out.println("Nota eliminada exitosamente.");
+            } else {
                 System.out.println("No se encontró la nota para ese estudiante y asignatura.");
             }
         }
