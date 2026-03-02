@@ -7,14 +7,12 @@ package sistemaacademico;
 /**
  *
  * @author DELL
- */
-public class Main {
+ */ 
+import java.util.Scanner;
+import java.util.ArrayList;
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
-    
-}
+
+
+
+   
+
