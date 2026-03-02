@@ -12,7 +12,26 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 
+public class Main {
+    static Scanner sc = new Scanner(System.in);
 
+    public static Asignatura registrarAsignatura() {
+        System.out.print("Nombre de la asignatura: ");
+        String nombre = sc.nextLine();
+        System.out.print("Creditos: ");
+        int creditos = Integer.parseInt(sc.nextLine());
+        System.out.print("Docente: ");
+        String docente = sc.nextLine();
+        return new Asignatura(nombre, creditos, docente);
+    }
+
+    public static void main(String[] args) {
+        ArrayList<Asignatura> lista = new ArrayList<>();
+        Asignatura asignatura = registrarAsignatura();
+        lista.add(asignatura);
+        System.out.println(asignatura.toString());
+    }
+}
 
    
 
