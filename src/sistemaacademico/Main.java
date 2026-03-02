@@ -9,6 +9,7 @@ import java.util.Scanner;
 /**
  *
  * @author DELL
+<<<<<<< HEAD
  */
 public class Main {
     /**
@@ -134,4 +135,101 @@ static void menuNotas(Scanner sc) {
     } while (opcion != 0);
 }
 
+=======
+ */ 
+import java.util.Scanner;
+import java.util.ArrayList;
+
+
+public class Main {
+    static Scanner sc = new Scanner(System.in);
+
+    public static Asignatura registrarAsignatura() {
+        System.out.print("Nombre de la asignatura: ");
+        String nombre = sc.nextLine();
+        System.out.print("Creditos: ");
+        int creditos = Integer.parseInt(sc.nextLine());
+        System.out.print("Docente: ");
+        String docente = sc.nextLine();
+        return new Asignatura(nombre, creditos, docente);
+    }
+    
+    public static void listarAsignaturas(ArrayList<Asignatura> lista) {
+    if (lista.isEmpty()) {
+        System.out.println("No hay asignaturas registradas.");
+    } else {
+        for (Asignatura a : lista) {
+            System.out.println(a.toString());
+        }
+    }
+>>>>>>> 9d21462fb44fa07c1235ad48ac99d7521b5966f9
 }
+
+public static void buscarAsignatura(ArrayList<Asignatura> lista) {
+    System.out.print("Ingrese el nombre de la asignatura a buscar: ");
+    String nombre = sc.nextLine();
+    boolean encontrada = false;
+    for (Asignatura a : lista) {
+        if (a.getNombre().equalsIgnoreCase(nombre)) {
+            System.out.println(a.toString());
+            encontrada = true;
+        }
+    }
+    if (!encontrada) {
+        System.out.println("Asignatura no encontrada.");
+    }
+}
+
+public static void actualizarAsignatura(ArrayList<Asignatura> lista) {
+    System.out.print("Ingrese el nombre de la asignatura a actualizar: ");
+    String nombre = sc.nextLine();
+    boolean encontrada = false;
+    for (Asignatura a : lista) {
+        if (a.getNombre().equalsIgnoreCase(nombre)) {
+            System.out.print("Nuevo nombre: ");
+            a.setNombre(sc.nextLine());
+            System.out.print("Nuevos creditos: ");
+            a.setCreditos(Integer.parseInt(sc.nextLine()));
+            System.out.print("Nuevo docente: ");
+            a.setDocente(sc.nextLine());
+            System.out.println("Asignatura actualizada.");
+            encontrada = true;
+        }
+    }
+    if (!encontrada) {
+        System.out.println("Asignatura no encontrada.");
+    }
+}
+
+public static void eliminarAsignatura(ArrayList<Asignatura> lista) {
+    System.out.print("Ingrese el nombre de la asignatura a eliminar: ");
+    String nombre = sc.nextLine();
+    boolean encontrada = false;
+    for (Asignatura a : lista) {
+        if (a.getNombre().equalsIgnoreCase(nombre)) {
+            lista.remove(a);
+            System.out.println("Asignatura eliminada.");
+            encontrada = true;
+            break;
+        }
+    }
+    if (!encontrada) {
+        System.out.println("Asignatura no encontrada.");
+    }
+}
+
+    public static void main(String[] args) {
+        ArrayList<Asignatura> lista = new ArrayList<>();
+        Asignatura asignatura = registrarAsignatura();
+        lista.add(asignatura);
+        System.out.println(asignatura.toString());
+        listarAsignaturas(lista);
+        buscarAsignatura(lista);
+        actualizarAsignatura(lista);
+        eliminarAsignatura(lista);
+        
+    }
+}
+
+   
+
