@@ -24,14 +24,6 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         MenuPrincipal(sc);
         sc.close();
-
-        Asignatura asignatura = registrarAsignatura();
-        asignaturas.add(asignatura);
-        System.out.println(asignatura.toString());
-        listarAsignaturas(asignaturas);
-        buscarAsignatura(asignaturas);
-        actualizarAsignatura(asignaturas);
-        eliminarAsignatura(asignaturas);
     }
 
     static void MenuPrincipal(Scanner sc) {
@@ -83,15 +75,15 @@ public class Main {
             sc.nextLine();
 
             switch (opcion) {
-                case 1: ;
+                case 1: registrarEstudiante(sc);
                     break;
-                case 2: ;
+                case 2: listarEstudiante();
                     break;
-                case 3: ;
+                case 3: buscarEstudiante(sc);
                     break;
-                case 4: ;
+                case 4: actualizarEstudiantes(sc);
                     break;
-                case 5: ;
+                case 5: eliminarEstudiantes(sc);
                     break;
                 case 0:
                     System.out.println("Volviendo...");
@@ -119,15 +111,15 @@ public class Main {
             sc.nextLine();
 
             switch (opcion) {
-                case 1: ;
+                case 1: registrarAsignatura(sc);
                     break;
-                case 2: ;
+                case 2: listarAsignaturas();
                     break;
-                case 3: ;
+                case 3: buscarAsignatura(sc);
                     break;
-                case 4: ;
+                case 4: actualizarAsignatura(sc);
                     break;
-                case 5: ;
+                case 5: eliminarAsignatura(sc);
                     break;
                 case 0:
                     System.out.println("Volviendo...");
@@ -155,15 +147,15 @@ public class Main {
             sc.nextLine();
 
             switch (opcion) {
-                case 1: ;
+                case 1: registrarNota(sc);
                     break;
-                case 2: ;
+                case 2: listarNotas();
                     break;
-                case 3: ;
+                case 3: buscarNota(sc);
                     break;
-                case 4: ;
+                case 4: actualizarNota(sc);
                     break;
-                case 5: ;
+                case 5: eliminarNota(sc);
                     break;
                 case 0:
                     System.out.println("Volviendo...");
@@ -175,17 +167,19 @@ public class Main {
         } while (opcion != 0);
     }
 
-    public static Asignatura registrarAsignatura(Scanner sc) {
+    public static void registrarAsignatura(Scanner sc) {
+        System.out.print("Codigo de la asignatura: ");
+        String codigo = sc.nextLine();
         System.out.print("Nombre de la asignatura: ");
         String nombre = sc.nextLine();
         System.out.print("Creditos: ");
         int creditos = Integer.parseInt(sc.nextLine());
         System.out.print("Docente: ");
         String docente = sc.nextLine();
-        return asignaturas(nombre, creditos, docente);
+         asignaturas.add(new Asignatura(nombre, codigo, creditos, docente));
     }
 
-    public static void listarAsignaturas(ArrayList<Asignatura> asignaturas) {
+    public static void listarAsignaturas() {
         if (asignaturas.isEmpty()) {
             System.out.println("No hay asignaturas registradas.");
         } else {
@@ -195,10 +189,7 @@ public class Main {
         }
     }
 
-    public static void registrarNota(ArrayList<Estudiante> estudiantes,
-            ArrayList<Asignatura> asignaturas,
-            ArrayList<Nota> notas,
-            Scanner sc) {
+    public static void registrarNota(Scanner sc) {
         System.out.println("\n--- Registrar Nota ---");
 
         System.out.print("Ingrese código del estudiante: ");
@@ -242,7 +233,7 @@ public class Main {
         System.out.println("Nota registrada exitosamente.");
     }
 
-    public static void listarNotas(ArrayList<Nota> notas) {
+    public static void listarNotas() {
         System.out.println("\n--- Listado de Notas ---");
         if (notas.isEmpty()) {
             System.out.println("No hay notas registradas.");
@@ -256,7 +247,7 @@ public class Main {
         }
     }
 
-    public static void buscarNota(ArrayList<Nota> notas, Scanner sc) {
+    public static void buscarNota( Scanner sc) {
         System.out.println("\n--- Buscar Nota ---");
         System.out.print("Ingrese código del estudiante: ");
         String codigoEst = sc.nextLine();
@@ -280,7 +271,7 @@ public class Main {
         }
     }
 
-    public static void actualizarNota(ArrayList<Nota> notas, Scanner sc) {
+    public static void actualizarNota( Scanner sc) {
         System.out.println("\n--- Actualizar Nota ---");
         System.out.print("Ingrese código del estudiante: ");
         String codigoEst = sc.nextLine();
@@ -319,7 +310,7 @@ public class Main {
         }
     }
 
-    public static void eliminarNota(ArrayList<Nota> notas, Scanner sc) {
+    public static void eliminarNota(Scanner sc) {
         System.out.println("\n--- Eliminar Nota ---");
         System.out.print("Ingrese código del estudiante: ");
         String codigoEst = sc.nextLine();
@@ -338,7 +329,7 @@ public class Main {
         }
     }
 
-    public static void buscarAsignatura(ArrayList<Asignatura> asignaturas, Scanner sc) {
+    public static void buscarAsignatura(Scanner sc) {
         System.out.print("Ingrese el nombre de la asignatura a buscar: ");
         String nombre = sc.nextLine();
         boolean encontrada = false;
@@ -353,7 +344,7 @@ public class Main {
         }
     }
 
-    public static void actualizarAsignatura(ArrayList<Asignatura> asignaturas, Scanner sc) {
+    public static void actualizarAsignatura( Scanner sc) {
         System.out.print("Ingrese el nombre de la asignatura a actualizar: ");
         String nombre = sc.nextLine();
         boolean encontrada = false;
@@ -374,7 +365,7 @@ public class Main {
         }
     }
 
-    public static void eliminarAsignatura(ArrayList<Asignatura> asignaturas, Scanner sc) {
+    public static void eliminarAsignatura(Scanner sc) {
         System.out.print("Ingrese el nombre de la asignatura a eliminar: ");
         String nombre = sc.nextLine();
         boolean encontrada = false;
@@ -390,4 +381,91 @@ public class Main {
             System.out.println("Asignatura no encontrada.");
         }
     }
+    
+    private static void registrarEstudiante(Scanner sc) {
+        System.out.print("Código: ");
+        String codigo = sc.nextLine();
+
+        System.out.print("Nombre: ");
+        String nombre = sc.nextLine();
+
+        System.out.print("Apellido: ");
+        String apellido = sc.nextLine();
+
+        System.out.print("Edad: ");
+        int edad = sc.nextInt();
+
+        System.out.print("Semestre: ");
+        int semestre = sc.nextInt();
+        sc.nextLine();
+
+        estudiantes.add(new Estudiante(codigo, nombre, apellido, edad, semestre));
+        System.out.println("Estudiante registrado correctamente");
+    }
+    
+    private static void listarEstudiante() {
+        if (estudiantes.isEmpty()) {
+            System.out.println("No hay estudiantes registrados");
+            return;
+        }
+
+        for (Estudiante e : estudiantes) {
+            System.out.println(e);
+        }
+    }
+
+    private static void buscarEstudiante(Scanner sc) {
+        System.out.print("Ingrese código a buscar: ");
+        String codigo = sc.nextLine();
+
+        for (Estudiante e : estudiantes) {
+            if (e.getCodigo().equalsIgnoreCase(codigo)) {
+                System.out.println(e);
+                return;
+            }
+        }
+        System.out.println("Estudiante no encontrado");
+    }
+    
+    private static void actualizarEstudiantes(Scanner sc) {
+        System.out.print("Código del estudiante a actualizar: ");
+        String codigo = sc.nextLine();
+
+        for (Estudiante e : estudiantes) {
+            if (e.getCodigo().equalsIgnoreCase(codigo)) {
+
+                System.out.print("Nuevo nombre: ");
+                e.setNombre(sc.nextLine());
+
+                System.out.print("Nuevo apellido: ");
+                e.setApellido(sc.nextLine());
+
+                System.out.print("Nueva edad: ");
+                e.setEdad(sc.nextInt());
+
+                System.out.print("Nuevo semestre: ");
+                e.setSemestre(sc.nextInt());
+                sc.nextLine();
+
+                System.out.println("Estudiante actualizado");
+                return;
+            }
+        }
+        System.out.println("Estudiante no encontrado");
+    }
+
+    private static void eliminarEstudiantes(Scanner sc) {
+        System.out.print("Código del estudiante a eliminar: ");
+        String codigo = sc.nextLine();
+
+        for (int i = 0; i < estudiantes.size(); i++) {
+            if (estudiantes.get(i).getCodigo().equalsIgnoreCase(codigo)) {
+                estudiantes.remove(i);
+                System.out.println("Estudiante eliminado");
+                return;
+            }
+        }
+        System.out.println("Estudiante no encontrado");
+    }
+
 }
