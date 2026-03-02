@@ -50,6 +50,27 @@ public static void buscarAsignatura(ArrayList<Asignatura> lista) {
     }
 }
 
+public static void actualizarAsignatura(ArrayList<Asignatura> lista) {
+    System.out.print("Ingrese el nombre de la asignatura a actualizar: ");
+    String nombre = sc.nextLine();
+    boolean encontrada = false;
+    for (Asignatura a : lista) {
+        if (a.getNombre().equalsIgnoreCase(nombre)) {
+            System.out.print("Nuevo nombre: ");
+            a.setNombre(sc.nextLine());
+            System.out.print("Nuevos creditos: ");
+            a.setCreditos(Integer.parseInt(sc.nextLine()));
+            System.out.print("Nuevo docente: ");
+            a.setDocente(sc.nextLine());
+            System.out.println("Asignatura actualizada.");
+            encontrada = true;
+        }
+    }
+    if (!encontrada) {
+        System.out.println("Asignatura no encontrada.");
+    }
+}
+
     public static void main(String[] args) {
         ArrayList<Asignatura> lista = new ArrayList<>();
         Asignatura asignatura = registrarAsignatura();
@@ -57,6 +78,8 @@ public static void buscarAsignatura(ArrayList<Asignatura> lista) {
         System.out.println(asignatura.toString());
         listarAsignaturas(lista);
         buscarAsignatura(lista);
+        actualizarAsignatura(lista);
+        
     }
 }
 
