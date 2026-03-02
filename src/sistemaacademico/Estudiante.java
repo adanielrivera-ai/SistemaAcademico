@@ -37,4 +37,14 @@ public void setEdad(int edad) { this.edad = edad; }
 
 public int getSemestre() { return semestre; }
 public void setSemestre(int semestre) { this.semestre = semestre; }
+
+public String toString() {
+    return "Estudiante{" +
+            "codigo='" + codigo + '\'' +
+            ", nombre='" + nombre + '\'' +
+            ", apellido='" + apellido + '\'' +
+            ", edad=" + edad +
+            ", semestre=" + semestre +
+            '}';
+}
 }
