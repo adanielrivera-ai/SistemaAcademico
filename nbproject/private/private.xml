@@ -3,13 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/SistemaAcademico/src/sistemaacademico/Main.java</file>
-=======
-            <file>file:/C:/Users/JAVIER%20FERNANDEZ/OneDrive/Documentos/NetBeansProjects/SistemaAcademico/src/sistemaacademico/Main.java</file>
-            <file>file:/C:/Users/JAVIER%20FERNANDEZ/OneDrive/Documentos/NetBeansProjects/SistemaAcademico/src/sistemaacademico/Estudiante.java</file>
-            <file>file:/C:/Users/JAVIER%20FERNANDEZ/OneDrive/Documentos/NetBeansProjects/SistemaAcademico/src/sistemaacademico/Asignatura.java</file>
->>>>>>> 9d21462fb44fa07c1235ad48ac99d7521b5966f9
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/SistemaAcademico/src/sistemaacademico/Estudiante.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/SistemaAcademico/src/sistemaacademico/Asignatura.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/SistemaAcademico/src/sistemaacademico/Nota.java</file>
         </group>
     </open-files>
 </project-private>
