@@ -71,6 +71,23 @@ public static void actualizarAsignatura(ArrayList<Asignatura> lista) {
     }
 }
 
+public static void eliminarAsignatura(ArrayList<Asignatura> lista) {
+    System.out.print("Ingrese el nombre de la asignatura a eliminar: ");
+    String nombre = sc.nextLine();
+    boolean encontrada = false;
+    for (Asignatura a : lista) {
+        if (a.getNombre().equalsIgnoreCase(nombre)) {
+            lista.remove(a);
+            System.out.println("Asignatura eliminada.");
+            encontrada = true;
+            break;
+        }
+    }
+    if (!encontrada) {
+        System.out.println("Asignatura no encontrada.");
+    }
+}
+
     public static void main(String[] args) {
         ArrayList<Asignatura> lista = new ArrayList<>();
         Asignatura asignatura = registrarAsignatura();
@@ -79,6 +96,7 @@ public static void actualizarAsignatura(ArrayList<Asignatura> lista) {
         listarAsignaturas(lista);
         buscarAsignatura(lista);
         actualizarAsignatura(lista);
+        eliminarAsignatura(lista);
         
     }
 }
